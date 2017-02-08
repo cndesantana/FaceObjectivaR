@@ -2,7 +2,7 @@ library("Rfacebook")
 
 app_id = "1219535758094887"
 app_secret = "0d7b93fb337020b9220de47a02b55d70"
-token = "EAACEdEose0cBANI2hoJb7xodEgWCJNfez8egzZBAvjtgFjl5mCA6NzUal4P3i5pogQ1OiBnJijzyZCrHG6baXyg7bLNEPYZB43h6PPFZBF6hBlgZC4KuEjEN0YHfe2SfeKQnDHe7rtnf2tIJ9ZAPpramgRKHZCwHygaGcVjI9cNhhm245TZARC7TidDr6whoqegZD"
+token = "EAACEdEose0cBAI982I1SpESjEcDUB2ulb7PciGEyejHYP4ZCuOrHOuRrBorcASGKKB4jRB088ddCNxalXiox9MEE6KvD0lj92tjby27ZB2DteLseOssgjZCkFYLCZB1ZCmuENZArxx6wLEULdYS6InXvQQ9AYNtT6wamqRocAd1AH1OyrId5ZBhvOGaT3XzCAcZD"
 
 me <- getUsers("me", token=token)
 my_friends <- getFriends(token, simplify=TRUE)
@@ -43,6 +43,18 @@ for(i in 1:nnodes){
 
 id_governo_bahia = "230798307122484"
 governo_bahia_page_data = getPage(id_governo_bahia, token = token, n= 50)
+
+#### Get post
+
+id_post = "484059694944787_1430601980290549"
+post = getPost(id_post, token, n = 500)
+post$comments$message
+post$comments$likes_count
+post$comments$created_time
+post$comments$from_id
+
+getUsers(post$comments$from_id[1],token=token)
+#From the message we can study the sentiments (Sentimental Analysis). We can also look for the location of each user, etc... 
 
 #### Search public status updates that mention a given keyword
 ##### DEPRECATED FUNCTION :(
